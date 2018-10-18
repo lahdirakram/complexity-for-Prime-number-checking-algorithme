@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Complexcité tp 02</title>
+	<meta charset="utf-8">
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<script type="text/javascript" src="../Highcharts/highcharts.js"></script>
+	<script type="text/javascript" src="../Highcharts/offline-exporting.js"></script>
+	<script type="text/javascript" src="../Highcharts/exporting.js"></script>
+</head>
+<body>
+	<div id="chart"></div>
+	<script type="text/javascript">
+		var first=[3,7,15,28,59,114,246,441,929,2061,3833,7478];
+		var second=[2,3,8,17,34,69,132,252,487,1029,2099,4298];
+		var third=[0,0,0,0,0,0,0,1,1,1,2,2];
+		var forsum = Highcharts.chart('chart', {
+					chart: {
+				        type: 'areaspline'
+				    },
+				 	title: {text: '  '},
+				 	xAxis: {
+				 		title: {text: 'Valleur en entré'},
+				 		categories:['1000003','2000003','4000037','8000009','16000057','32000011','64000031','128000003','256000001','512000009','1024000009','2048000011']
+				 	},
+				 	yAxis: {min: 0,title: {text: 'Temp d\'execution'}},
+				 	tooltip: {	headerFormat:'<table>',
+				 				pointFormat:'<tr>'+
+				 								// '<td style="color:red;padding:0">Valeur de N :</td>'+
+				 								// '<td style="padding:0">{point.categorie}</td>'+
+				 							'</tr>'+ 
+				 							'<tr>'+
+				 								'<td style="color:red;padding:0">{series.name}: </td>'+
+				 								'<td style="padding:0"><b>{point.y}</b> miliseconds</td>'+
+				 							 '</tr>',
+				 				footerFormat:'</table>',
+				 				shared: true,
+				 				useHTML: true},
+				 	rangeSelector: {
+				        selected: 1
+				    },
+				 	plotOptions: {
+				        areaspline: {
+				            fillOpacity: 0.1
+				        }
+				    },
+				 	legend: {layout: 'horizontal',align: 'center',verticalAlign: 'bottom'},
+				 	series: [{
+				 		name:"1er algo",
+				 		data: first
+				 	},{
+				 		name:"2eme algo",
+				 		data: second
+				 	},{
+				 		name:"3em algo",
+				 		data: third
+				 	}],
+				 	responsive: {rules: [{condition: {maxWidth: 500},chartOptions: {legend: {layout: 'horizontal',align: 'center',verticalAlign: 'bottom'}}}]}
+			 	});
+	</script>
+
+</body>
+</html>
